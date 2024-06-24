@@ -1,7 +1,7 @@
-/ render-functions.js
+
 export function renderImages(images) {
   const refs = {
-    imageList: document.querySelector('.images-list'),
+    imageList: document.querySelector(`.images-list`),
   }
 
   const markup = images.map((image) => {
@@ -30,12 +30,12 @@ export function renderImages(images) {
     </li>`;
   }).join('');
 
-  refs.imageList.innerHTML = markup;
+  refs.imageList.innerHTML += markup;
 }
 
 export function clearGallery() {
   const refs = {
-    imageList: document.querySelector('.images-list'),
+    imageList: document.querySelector(`.images-list`),
   }
-  refs.imageList.innerHTML = '';
+  refs.imageList.innerHTML = ``;
 }

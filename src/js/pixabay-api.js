@@ -11,7 +11,7 @@ export async function fetchImages(query, page = 1) {
       orientation: 'horizontal',
       safesearch: true,
       page: page,
-      per_page: 12,
+      per_page: 15,
     };
   
   

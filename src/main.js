@@ -16,13 +16,18 @@ const refs = {
     imageSearchInput: document.querySelector('.search-input'),
     submitButton: document.querySelector('.search-btn'),
     imageList: document.querySelector('.images-list'),
+    loadMoreButton: document.querySelector('.load-more'),
+
     loader: document.getElementById('loader'), // Updated to correct the selector
 }
 
 refs.loader.classList.add('hidden');
+refs.loadMoreButton.classList.add('hidden');
 
 let lightbox;
-let request;
+let request = "";
+let page = 1;
+
 
 refs.imageSearchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -39,7 +44,10 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
     }
 
     refs.loader.classList.remove('hidden');
+    refs.loadMoreButton.classList.add('hidden');
+
     clearGallery();
+    page = 1;
 
     try {
         const images = await fetchImages(request);
@@ -51,6 +59,7 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
                 transitionIn: 'bounceInDown',
                 transitionOut: 'fadeOutDown',
             });
+
         } else {
             renderImages(images.hits);
 
@@ -70,6 +79,8 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
                     disableRightClick: true,
                 });
             }
+            refs.loadMoreButton.classList.remove('hidden');
+
         }
     } catch (err) {
         iziToast.error({
@@ -81,5 +92,26 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
     } finally {
         refs.loader.classList.add('hidden');
         e.target.reset();
+    }
+});
+refs.loadMoreButton.addEventListener('click', async () => {
+    page += 1;
+    refs.loader.classList.remove('hidden');
+    refs.loadMoreButton.classList.add('hidden');
+
+    try {
+        const images = await fetchImages(request, page);
+        renderImages(images.hits);
+        lightbox.refresh();
+        refs.loadMoreButton.classList.remove('hidden');
+    } catch (err) {
+        iziToast.error({
+            message: 'Something went wrong. Please try again later!',
+            position: 'topRight',
+            transitionIn: 'bounceInDown',
+            transitionOut: 'fadeOutDown',
+        });
+    } finally {
+        refs.loader.classList.add('hidden');
     }
 });

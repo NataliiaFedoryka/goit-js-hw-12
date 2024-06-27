@@ -75,17 +75,17 @@ body {
   display: none;
 }
 .search-btn {
-  background: #4e75ff;
+  background-color: #4e75ff;
   border-radius: 8px;
 padding: 8px 16px;
 width: 91px;
 height: 40px;
 }
 .search-btn :hover {
-  background: #6c8cff;
+  background-color: #6c8cff;
 }
 .load-more {
-  background: #4e75ff;
+  background-color: #4e75ff;
   border-radius: 8px;
 padding: 8px 16px;
 width: 125px;

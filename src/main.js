@@ -48,7 +48,7 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
     clearGallery();
     page = 1;
 
-    ...try {
+    try {
         const { data } = await fetchImages(request);
         const { hits, total } = data;
 
@@ -81,8 +81,9 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
                     disableRightClick: true,
                 });
             }
-            refs.loadMoreButton.classList.remove('hidden');
+            refs.loadMoreButton.classList.add('hidden');
         }
+        refs.loader.classList.remove('hidden');
 
         // Check if end of collection is reached
         if (page * 15 >= totalHits) {
@@ -149,7 +150,7 @@ refs.loadMoreButton.addEventListener('click', async () => {
 
 
         
-       
+       refs.loader.classList.add('hidden');
 
         // Check if end of collection is reached
         if (page * 15 >= totalHits) {

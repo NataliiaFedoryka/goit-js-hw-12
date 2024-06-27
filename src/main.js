@@ -112,6 +112,7 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
 
 refs.loadMoreButton.addEventListener('click', async () => {
     page += 1;
+    refs.loadMoreButton.textContent = "Loading images, please wait...";
     refs.loader.classList.remove('hidden');
     refs.loadMoreButton.classList.add('hidden');
 

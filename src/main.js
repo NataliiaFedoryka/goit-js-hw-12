@@ -1,4 +1,3 @@
-import axios from `axios`;
 
 
 
@@ -26,6 +25,7 @@ refs.loadMoreButton.classList.add('hidden');
 let lightbox;
 let request = "";
 let page = 1;
+let totalHits = 0; 
 
 
 refs.imageSearchForm.addEventListener('submit', async (e) => {
@@ -48,9 +48,13 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
     clearGallery();
     page = 1;
 
-    try {
-        const images = await fetchImages(request);
-        if (images.hits.length === 0) {
+    ...try {
+        const { data } = await fetchImages(request);
+        const { hits, total } = data;
+
+        const totalHits = total; // Declaring totalHits here and using it
+
+        if (hits.length === 0) {
             refs.imageList.innerHTML = '';
             iziToast.error({
                 message: 'Sorry, there are no images matching your search query. Please try again!',
@@ -58,9 +62,8 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
                 transitionIn: 'bounceInDown',
                 transitionOut: 'fadeOutDown',
             });
-
         } else {
-            renderImages(images.hits);
+            renderImages(hits);
 
             if (lightbox) {
                 lightbox.refresh();
@@ -79,7 +82,19 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
                 });
             }
             refs.loadMoreButton.classList.remove('hidden');
+        }
 
+        // Check if end of collection is reached
+        if (page * 15 >= totalHits) {
+            refs.loadMoreButton.classList.add('hidden');
+            iziToast.info({
+                message: "We're sorry, but you've reached the end of search results.",
+                position: 'topRight',
+                transitionIn: 'bounceInDown',
+                transitionOut: 'fadeOutDown',
+            });
+        } else {
+            refs.loadMoreButton.classList.remove('hidden');
         }
     } catch (err) {
         iziToast.error({
@@ -93,24 +108,64 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
         e.target.reset();
     }
 });
+
 refs.loadMoreButton.addEventListener('click', async () => {
     page += 1;
     refs.loader.classList.remove('hidden');
     refs.loadMoreButton.classList.add('hidden');
 
     try {
-        const images = await fetchImages(request, page);
-        renderImages(images.hits);
-        lightbox.refresh();
-         const { height: cardHeight } = document.querySelector('.images-list-item').getBoundingClientRect();
-         window.scrollBy({
-            top:cardHeight * 2,
-            behavior: 'smooth', 
-         })
-refs.loadMoreButton.classList.remove('hidden');
+        const { data } = await fetchImages(request);
+        const { hits, total } = data;
+        totalHits = total;
+        if (hits.length === 0) {
+            refs.imageList.innerHTML = '';
+            iziToast.error({
+                message: 'Something went wrong. Please try again later!',
+                position: 'topRight',
+                transitionIn: 'bounceInDown',
+                transitionOut: 'fadeOutDown',
+        });
+
+        }
+        else {renderImages(hits);
+        if (lightbox) {
+             lightbox.refresh();
+        }
+        else {
+            lightbox = new SimpleLightbox('.images-list-item a ', {
+                aptions: true,
+                    captionSelector: 'img',
+                    captionType: 'attr',
+                    captionsData: 'alt',
+                    captionPosition: 'bottom',
+                    captionDelay: 250,
+                    animationSpeed: 300,
+                    widthRatio: 1,
+                    heightRatio: 0.95,
+                    disableRightClick: true,
+                });
+            }
 
 
-    } catch (err) {
+        
+       
+
+        // Check if end of collection is reached
+        if (page * 15 >= totalHits) {
+            refs.loadMoreButton.classList.add('hidden');
+            iziToast.info({
+                message: "We're sorry, but you've reached the end of search results.",
+                position: 'topRight',
+
+transitionIn: 'bounceInDown',
+                transitionOut: 'fadeOutDown',
+            });
+        } else {
+            refs.loadMoreButton.classList.remove('hidden');
+            
+         }} }
+     catch (err) {
         iziToast.error({
             message: 'Something went wrong. Please try again later!',
             position: 'topRight',

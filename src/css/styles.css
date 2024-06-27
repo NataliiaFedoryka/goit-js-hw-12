@@ -71,7 +71,7 @@ body {
   top: 50%;
   left: 50%;
 }
-hidden {
+.hidden {
   display: none;
 }
 

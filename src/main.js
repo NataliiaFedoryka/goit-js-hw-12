@@ -18,8 +18,7 @@ const refs = {
     imageList: document.querySelector('.images-list'),
     loadMoreButton: document.querySelector('.load-more'),
 
-    loader: document.getElementById('loader'), // Updated to correct the selector
-}
+    loader: document.getElementById('loader'), }
 
 refs.loader.classList.add('hidden');
 refs.loadMoreButton.classList.add('hidden');

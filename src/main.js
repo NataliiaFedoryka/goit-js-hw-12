@@ -102,7 +102,14 @@ refs.loadMoreButton.addEventListener('click', async () => {
         const images = await fetchImages(request, page);
         renderImages(images.hits);
         lightbox.refresh();
-        refs.loadMoreButton.classList.remove('hidden');
+         const { height: cardHeight } = document.querySelector('.images-list-item').getBoundingClientRect();
+         window.scrollBy({
+            top:cardHeight * 2,
+            behavior: 'smooth', 
+         })
+refs.loadMoreButton.classList.remove('hidden');
+
+
     } catch (err) {
         iziToast.error({
             message: 'Something went wrong. Please try again later!',

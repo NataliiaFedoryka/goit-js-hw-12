@@ -1,4 +1,4 @@
-
+'use strict';
 
 
 import iziToast from "izitoast";
@@ -147,9 +147,6 @@ refs.loadMoreButton.addEventListener('click', async () => {
                     disableRightClick: true,
                 });
             }
-
-
-        
        refs.loader.classList.add('hidden');
 
         // Check if end of collection is reached

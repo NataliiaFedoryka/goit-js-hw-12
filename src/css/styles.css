@@ -86,7 +86,7 @@ padding: 8px 16px;
 width: 91px;
 height: 40px;
 }
-.search-btn :hover {
+.search-btn:hover {
   background-color: #6c8cff;
 }
 .load-more {
@@ -114,10 +114,10 @@ width: 272px;
 height: 40px;
 border: 1px solid #808080;
 }
-.search-input :hover {
+.search-input:hover {
   border: 1px solid #000;
 }
-.search-input :focus {
+.search-input:focus {
   border: 1px solid #4e75ff;
 }
 @keyframes rotate {

@@ -33,6 +33,7 @@ body {
 #search-form {
  
   display: flex;
+
   gap: 8px;
   margin: 0 auto 32px;
   align-items: center;
@@ -127,6 +128,11 @@ border: 1px solid #808080;
 }
 .search-input:focus {
   border: 1px solid #4e75ff;
+}
+.search-input,
+.search-btn {
+  display: flex;
+  align-items: center;
 }
 @keyframes rotate {
   100% {

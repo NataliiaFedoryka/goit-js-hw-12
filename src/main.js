@@ -1,6 +1,6 @@
 'use strict';
 
-
+import './css/styles.css';
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
@@ -19,7 +19,7 @@ const refs = {
 
     loader: document.getElementById('loader'), }
 
-refs.loader.classList.add('hidden');
+// refs.loader.classList.add('hidden');
 refs.loadMoreButton.classList.add('hidden');
 
 let lightbox;
@@ -52,7 +52,7 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
         const { data } = await fetchImages(request, page);
         const { hits, total } = data;
 
-         totalHits = total; 
+        const  totalHits = total; 
         if (hits.length === 0) {
             refs.imageList.innerHTML = '';
             iziToast.error({
@@ -80,7 +80,7 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
                     disableRightClick: true,
                 });
             }
-            // refs.loadMoreButton.classList.add('hidden');
+             refs.loadMoreButton.classList.add('hidden');
         }
         refs.loader.classList.add('hidden');
 

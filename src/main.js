@@ -173,5 +173,6 @@ transitionIn: 'bounceInDown',
         });
     } finally {
         refs.loader.classList.add('hidden');
+        refs.loadMoreButton.textContent = "Load more";
     }
 });

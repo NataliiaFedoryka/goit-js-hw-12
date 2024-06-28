@@ -34,6 +34,9 @@ export function renderImages(images) {
 }
 
 export function clearGallery() {
+  const refs = {
+    imageList: document.querySelector(`.images-list`),
+  };
   
   refs.imageList.innerHTML = ``;
 }

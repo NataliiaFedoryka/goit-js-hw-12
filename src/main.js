@@ -49,11 +49,10 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
     page = 1;
 
     try {
-        const { data } = await fetchImages(request);
+        const { data } = await fetchImages(request, page);
         const { hits, total } = data;
 
-        const totalHits = total; // Declaring totalHits here and using it
-
+         totalHits = total; 
         if (hits.length === 0) {
             refs.imageList.innerHTML = '';
             iziToast.error({
@@ -81,9 +80,9 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
                     disableRightClick: true,
                 });
             }
-            refs.loadMoreButton.classList.add('hidden');
+            // refs.loadMoreButton.classList.add('hidden');
         }
-        refs.loader.classList.remove('hidden');
+        refs.loader.classList.add('hidden');
 
         // Check if end of collection is reached
         if (page * 15 >= totalHits) {

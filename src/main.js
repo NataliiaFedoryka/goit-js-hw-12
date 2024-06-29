@@ -137,7 +137,7 @@ refs.loadMoreButton.addEventListener('click', async () => {
         }
         else {
             lightbox = new SimpleLightbox('.images-list-item a ', {
-                aptions: true,
+                captions: true,
                     captionSelector: 'img',
                     captionType: 'attr',
                     captionsData: 'alt',

@@ -90,6 +90,13 @@ border-radius: 8px;
 padding: 8px 16px;
 width: 91px;
 height: 40px;
+font-family: "Montserrat", sans-serif;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px; 
+line-height: 1.5;
+letter-spacing: 0.04em;
+color: #fff;
 }
 .search-btn:hover {
   background-color: #6c8cff;
@@ -106,6 +113,13 @@ padding: 8px 16px;
 width: 125px;
 height: 40px;
 margin: 20px auto;
+font-family: "Montserrat", sans-serif;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px; 
+line-height: 1.5;
+letter-spacing: 0.04em;
+color: #fff;
 }
 .load-more.hidden {
   display: none;

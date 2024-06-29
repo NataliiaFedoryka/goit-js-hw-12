@@ -49,7 +49,8 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
     page = 1;
 
     try {
-        const { data } = await fetchImages(request, page);
+        const data  = await fetchImages(request, page);
+        console.log(data);
         const { hits, total } = data;
 
          totalHits = total; 

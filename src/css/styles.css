@@ -48,7 +48,7 @@ display: flex;
 
 .images-list-item {
   display: block;
-  width: 360px;
+  width: calc(33.33%-16px);
   height: 200px;
 }
 
@@ -121,6 +121,7 @@ line-height: 24px;
 line-height: 1.5;
 letter-spacing: 0.04em;
 color: #fff;
+white-space: nowrap;
 }
 .load-more.hidden {
   display: none;

@@ -98,14 +98,14 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
             refs.loadMoreButton.classList.remove('hidden');
         }
       } 
-    //   catch (err) {
-    //       iziToast.error({
-    //         message: 'Something went wrong. Please try again later!',
-    //        position: 'topRight',
-    //         transitionIn: 'bounceInDown',
-    //        transitionOut: 'fadeOutDown',
-    //     });
-    // }
+     catch (err) {
+       iziToast.error({
+            message: 'Something went wrong. Please try again later!',
+           position: 'topRight',
+            transitionIn: 'bounceInDown',
+          transitionOut: 'fadeOutDown',
+        });
+     }
      finally {
         refs.loader.classList.add('hidden');
         e.target.reset();

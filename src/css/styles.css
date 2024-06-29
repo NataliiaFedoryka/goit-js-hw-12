@@ -64,8 +64,8 @@ display: flex;
   border-bottom: 1px solid #808080;
 border-left: 1px solid #808080;
 border-right: 1px solid #808080;
-width: 360px;
-height: 48px;
+/* width: 360px;
+height: 48px; */
 background: #fff;
 }
 

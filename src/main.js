@@ -7,7 +7,7 @@ import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
  import "simplelightbox/dist/simple-lightbox.min.css";
 
-import { renderImages, clearGallery } from "./js/render-functions.js";
+import  { renderImages } from "./js/render-functions.js";
 import { fetchImages } from "./js/pixabay-api.js";
 
 const refs = {
@@ -45,12 +45,12 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
     refs.loader.classList.remove('hidden');
     refs.loadMoreButton.classList.add('hidden');
 
-    clearGallery();
+    
     page = 1;
 
     try {
         const data  = await fetchImages(request, page);
-        console.log(data);
+        
         const { hits, total } = data;
 
          totalHits = total; 
@@ -120,7 +120,7 @@ refs.loadMoreButton.addEventListener('click', async () => {
 
     try {
         const  data  = await fetchImages(request, page);
-        console.log(data);
+        
         const { hits, total } = data;
         totalHits = total;
         if (hits.length === 0) {
@@ -133,7 +133,9 @@ refs.loadMoreButton.addEventListener('click', async () => {
         });
 
         }
-        else {renderImages(hits);
+        else {
+            renderImages(hits);
+
         if (lightbox) {
              lightbox.refresh();
         }

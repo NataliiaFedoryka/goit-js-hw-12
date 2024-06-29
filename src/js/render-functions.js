@@ -33,10 +33,10 @@ export function renderImages(images) {
   refs.imageList.innerHTML += markup;
 }
 
-export function clearGallery() {
-  const refs = {
-    imageList: document.querySelector(`.images-list`),
-  };
+//export default function clearGallery() {
+  //const refs = {
+   // imageList: document.querySelector(`.images-list`),
+  //};
   
-  refs.imageList.innerHTML = ``;
-}
+ // refs.imageList.innerHTML = ``;
+//}

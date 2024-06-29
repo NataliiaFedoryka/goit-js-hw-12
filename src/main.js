@@ -119,7 +119,8 @@ refs.loadMoreButton.addEventListener('click', async () => {
     refs.loadMoreButton.classList.add('hidden');
 
     try {
-        const { data } = await fetchImages(request, page);
+        const  data  = await fetchImages(request, page);
+        console.log(data);
         const { hits, total } = data;
         totalHits = total;
         if (hits.length === 0) {
@@ -167,6 +168,7 @@ transitionIn: 'bounceInDown',
             
          }} }
      catch (err) {
+        console.error('Error fetching images; , err')
         iziToast.error({
             message: 'Something went wrong. Please try again later!',
             position: 'topRight',

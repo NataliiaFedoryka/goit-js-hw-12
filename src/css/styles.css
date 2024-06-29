@@ -45,6 +45,7 @@ display: flex;
   gap: 24px;
   max-width: 1128px;
   margin-bottom: 32px;
+  justify-content: center;
 }
 
 .images-list-item {
@@ -116,7 +117,7 @@ border-radius: 8px;
 padding: 8px 16px;
 width: 125px;
 height: 40px;
-margin: 0 32px;
+margin: 20 auto;
 font-family: "Montserrat", sans-serif;
 font-weight: 500;
 font-size: 16px;

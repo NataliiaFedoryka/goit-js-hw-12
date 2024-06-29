@@ -116,7 +116,7 @@ refs.loadMoreButton.addEventListener('click', async () => {
     refs.loadMoreButton.classList.add('hidden');
 
     try {
-        const { data } = await fetchImages(request);
+        const { data } = await fetchImages(request, page);
         const { hits, total } = data;
         totalHits = total;
         if (hits.length === 0) {

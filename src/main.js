@@ -19,7 +19,7 @@ const refs = {
 
     loader: document.getElementById('loader'), }
 
-// refs.loader.classList.add('hidden');
+
 refs.loadMoreButton.classList.add('hidden');
 
 let lightbox;
@@ -85,27 +85,18 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
                     disableRightClick: true,
                 });
             }
-            //  refs.loadMoreButton.classList.add('hidden');
+            
         }
-        // refs.loader.classList.add('hidden');
-
-        // Check if end of collection is reached
+       
         if (page * perPage < totalHits) {
-            refs.loadMoreButton.classList.remove('hidden');}
-            else {
-            iziToast.info({
-                message: "We're sorry, but you've reached the end of search results.",
-                position: 'topRight',
-                transitionIn: 'bounceInDown',
-                transitionOut: 'fadeOutDown',
-            });
-        // } else {
-            // refs.loadMoreButton.classList.add('hidden');
+            refs.loadMoreButton.classList.remove('hidden');
         }
-      } 
-     catch (err) {
-        console.error('Error fetching images', err);
-       iziToast.error({
+            else {
+                refs.loadMoreButton.classList.add('hidden');}}
+                catch(err) {
+                    console.error('Error fetching images', err);
+ iziToast.error({
+    //             
             message: 'Something went wrong. Please try again later!',
            position: 'topRight',
             transitionIn: 'bounceInDown',
@@ -159,28 +150,17 @@ refs.loadMoreButton.addEventListener('click', async () => {
                     heightRatio: 0.95,
                     disableRightClick: true,
                 });
-            }
-    //    refs.loader.classList.add('hidden');
-
-        // Check if end of collection is reached
+            } }
+    
         if (page * perPage < totalHits) {
             refs.loadMoreButton.classList.remove('hidden');}
             else {
-            iziToast.info({
-                message: "We're sorry, but you've reached the end of search results.",
-                position: 'topRight',
-
-transitionIn: 'bounceInDown',
-                transitionOut: 'fadeOutDown',
-            });
-        // } else {
-        //     refs.loadMoreButton.classList.remove('hidden');
+                refs.loadMoreButton.classList.add('hidden'); }
+             } catch (err) {
+                    console.error('Error fetching images', err);
             
-         }} 
-        refs.loader.classList.add('hidden'); }
-     catch (err) {
-        console.error('Error fetching images; , err')
-        iziToast.error({
+            iziToast.error({
+                
             message: 'Something went wrong. Please try again later!',
             position: 'topRight',
             transitionIn: 'bounceInDown',

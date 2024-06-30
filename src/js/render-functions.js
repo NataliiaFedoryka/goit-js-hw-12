@@ -29,8 +29,9 @@ export function renderImages(images) {
       </ul>
     </li>`;
   }).join('');
+  return markup;
 
-  refs.imageList.insertAdjacentHTML('be foreend', markup);
+  // refs.imageList.insertAdjacentHTML('be foreend', markup);
 }
 
 //export default function clearGallery() {

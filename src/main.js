@@ -63,8 +63,10 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
                 transitionOut: 'fadeOutDown',
             });
         } else {
-            refs.imageList.innerHTML = '';
-            renderImages(hits);
+             refs.imageList.innerHTML = '';
+            // renderImages(hits);
+            const markup = renderImages(hits);
+            refs.imageList.insertAdjacentHTML('be foreend', markup);
 
             if (lightbox) {
                 lightbox.refresh();
@@ -88,7 +90,7 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
 
         // Check if end of collection is reached
         if (page * 15 >= totalHits) {
-            refs.loadMoreButton.classList.add('hidden');
+            refs.loadMoreButton.classList.remove('hidden');
             iziToast.info({
                 message: "We're sorry, but you've reached the end of search results.",
                 position: 'topRight',
@@ -135,7 +137,8 @@ refs.loadMoreButton.addEventListener('click', async () => {
 
         }
         else {
-            renderImages(hits);
+            const markup = renderImages(hits);
+            refs.imageList.insertAdjacentHTML('beforeend', markup);
 
         if (lightbox) {
              lightbox.refresh();
@@ -158,7 +161,7 @@ refs.loadMoreButton.addEventListener('click', async () => {
 
         // Check if end of collection is reached
         if (page * 15 >= totalHits) {
-            refs.loadMoreButton.classList.add('hidden');
+            refs.loadMoreButton.classList.remove('hidden');
             iziToast.info({
                 message: "We're sorry, but you've reached the end of search results.",
                 position: 'topRight',

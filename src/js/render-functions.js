@@ -30,7 +30,7 @@ export function renderImages(images) {
     </li>`;
   }).join('');
 
-  refs.imageList.innerHTML += markup;
+  refs.imageList.insertAdjacentHTML('be foreend', markup);
 }
 
 //export default function clearGallery() {

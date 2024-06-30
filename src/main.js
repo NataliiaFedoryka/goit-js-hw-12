@@ -63,7 +63,7 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
                 transitionOut: 'fadeOutDown',
             });
         } else {
-            refs.imageList.innerHTML = '';
+            // refs.imageList.innerHTML = '';
             renderImages(hits);
 
             if (lightbox) {

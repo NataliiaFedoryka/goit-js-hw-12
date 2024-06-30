@@ -26,6 +26,7 @@ let lightbox;
 let request = "";
 let page = 1;
 let totalHits = 0; 
+const perPage = 15;
 
 
 refs.imageSearchForm.addEventListener('submit', async (e) => {
@@ -84,24 +85,26 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
                     disableRightClick: true,
                 });
             }
-             refs.loadMoreButton.classList.add('hidden');
+            //  refs.loadMoreButton.classList.add('hidden');
         }
-        refs.loader.classList.add('hidden');
+        // refs.loader.classList.add('hidden');
 
         // Check if end of collection is reached
-        if (page * 15 >= totalHits) {
-            refs.loadMoreButton.classList.remove('hidden');
+        if (page * perPage < totalHits) {
+            refs.loadMoreButton.classList.remove('hidden');}
+            else {
             iziToast.info({
                 message: "We're sorry, but you've reached the end of search results.",
                 position: 'topRight',
                 transitionIn: 'bounceInDown',
                 transitionOut: 'fadeOutDown',
             });
-        } else {
-            refs.loadMoreButton.classList.remove('hidden');
+        // } else {
+            // refs.loadMoreButton.classList.add('hidden');
         }
       } 
      catch (err) {
+        console.error('Error fetching images', err);
        iziToast.error({
             message: 'Something went wrong. Please try again later!',
            position: 'topRight',
@@ -157,11 +160,12 @@ refs.loadMoreButton.addEventListener('click', async () => {
                     disableRightClick: true,
                 });
             }
-       refs.loader.classList.add('hidden');
+    //    refs.loader.classList.add('hidden');
 
         // Check if end of collection is reached
-        if (page * 15 >= totalHits) {
-            refs.loadMoreButton.classList.remove('hidden');
+        if (page * perPage < totalHits) {
+            refs.loadMoreButton.classList.remove('hidden');}
+            else {
             iziToast.info({
                 message: "We're sorry, but you've reached the end of search results.",
                 position: 'topRight',
@@ -169,10 +173,11 @@ refs.loadMoreButton.addEventListener('click', async () => {
 transitionIn: 'bounceInDown',
                 transitionOut: 'fadeOutDown',
             });
-        } else {
-            refs.loadMoreButton.classList.remove('hidden');
+        // } else {
+        //     refs.loadMoreButton.classList.remove('hidden');
             
-         }} }
+         }} 
+        refs.loader.classList.add('hidden'); }
      catch (err) {
         console.error('Error fetching images; , err')
         iziToast.error({

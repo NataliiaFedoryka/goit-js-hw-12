@@ -66,7 +66,7 @@ refs.imageSearchForm.addEventListener('submit', async (e) => {
              refs.imageList.innerHTML = '';
             // renderImages(hits);
             const markup = renderImages(hits);
-            refs.imageList.insertAdjacentHTML('be foreend', markup);
+            refs.imageList.insertAdjacentHTML('beforeend', markup);
 
             if (lightbox) {
                 lightbox.refresh();
